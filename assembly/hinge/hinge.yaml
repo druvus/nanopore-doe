@@ -1,0 +1,59 @@
+before_run:
+
+design:
+    type:
+
+    factors:
+        length_treshold:
+            min:
+
+            max:
+
+            low_init:
+
+            high_init:
+
+        quality_threshold:
+            min:
+
+            max:
+
+            low_init:
+
+            high_init:
+
+        aln_threshold:
+            min:
+
+            max:
+
+            low_init:
+
+            high_init:
+
+        min_cov:
+            min:
+
+            max:
+
+            low_init:
+
+            high_init:
+
+        cut_off:
+            min:
+
+            max:
+
+            low_init:
+
+            high_init:
+
+        theta:
+            min:
+
+            max:
+
+            low_init:
+
+            high_init:

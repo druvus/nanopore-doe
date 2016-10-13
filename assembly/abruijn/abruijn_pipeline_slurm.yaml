@@ -1,0 +1,76 @@
+before_run:
+    scripts:
+        - source activate abruijn
+design:
+    type: ccc
+
+    factors:
+#        iterations:
+#            min: 1
+#            max: 5
+#            low_init:
+#            high_init:
+#            type: ordinal
+        kmer-size:
+            min: 10
+            max: 20
+            low_init: 14
+            high_init: 18
+            type: ordinal
+        min-overlap:
+            min: 1000
+            max: 10000
+            low_init: 3000
+            high_init: 6000
+            type: ordinal
+        response:
+            N50:
+                criterion: maximize
+
+result_file: "N50.txt"
+
+working_directory: "/proj/nobackup/b201535/assembly/abruijn/"
+
+
+pipeline:
+    - Assembly
+    - CalculateResponse
+
+SLURM:
+    account_name: b2015353
+
+Assembly:
+    script: >
+       abruijn /proj/nobackup/b2015353/K2000295_FSC771_mkI_R73_20160317.fa abruijn_out 60 \
+            -i 2 \
+            -p nano \
+            -k {% kmer-size %}
+            -o {% min-overlap %}
+    
+    factors:
+        iterations:
+            substitute: true
+        kmer-size:
+            substitute: true
+        min-overlap:
+            substitute: true
+
+    SLURM:
+        p: core
+        n: 1
+        t: 00:20:00
+        o: slurm.out
+        e: slurm.error
+
+CalculateResponse:
+    script: >
+        python /proj/nobackup/b2015353/scaffolding/bin/response_scoring.py \
+            --fasta abtuijn_output.scaffolds.fa \
+            > {% result_file %}
+
+    SLURM:
+        p: core
+        n: 1
+        t: 00:2:00
+
+
