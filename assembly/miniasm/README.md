@@ -68,3 +68,8 @@ Options:
     -V          print version number
 ```
 
+## Optimization
+The variables are selected for evaluation.
+
+* 
+* 
