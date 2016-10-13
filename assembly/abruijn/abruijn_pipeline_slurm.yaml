@@ -48,8 +48,8 @@ Assembly:
             -o {% min-overlap %}
     
     factors:
-        iterations:
-            substitute: true
+#        iterations:
+#            substitute: true
         kmer-size:
             substitute: true
         min-overlap:
