@@ -48,6 +48,6 @@
 ## Optimization
 The variables are selected for evaluation.
 
-*KMER_SIZE
-*MIN_OVERLAP
-*
+* KMER_SIZE  
+* MIN_OVERLAP  
+*  
